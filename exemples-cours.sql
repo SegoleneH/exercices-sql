@@ -3,27 +3,29 @@
 -- Caractère d'échappement pour les ' : doubler ' 
     -- exemple :`La promo de l''année 2023`
 
+--*___________________________________________LIKE_____________________________________________________________________________________________________________
 
-SELECT *
-FROM `user`
-WHERE email LIKE '%gmail.com';
---> va matcher toutes les adresses mail qui se terminent par '%gmail.com' 
---> pas utilisé: on utilise serveur de recherche (elastic search(Java), solr(C), sphynx(Java) par ex)
+-- L’opérateur LIKE est utilisé dans la clause WHERE des requêtes SQL. 
+    --Ce mot-clé permet d’effectuer une recherche sur un modèle particulier. 
+    
+--^SYNTAXE =  WHERE colonne LIKE modele
+
+--LIKE ‘%a’ : permet de rechercher toutes les chaines de caractère qui se termine par un “a”.
+
+--LIKE ‘a%’ : permet de rechercher toutes les lignes de “colonne” qui commence par un “a”.
+
+--LIKE ‘%a%’ : rechercher tous les enregistrement qui utilisent le caractère “a”.
+
+--LIKE ‘pa%on’ : ce modèle permet de rechercher les chaines qui commence par “pa” et qui se terminent par “on”, comme “pantalon” ou “pardon”.
+
+
+
+--*________________________________________EXEMPLES______________________________________________________________________________________________________________
 
 -- tous les users dont l'email se termine par '@example.com'
 SELECT *
 FROM `user`
 WHERE email LIKE '%@example.com';
-
--- tous les users dont l'email commence par 'a'
-SELECT *
-FROM `user`
-WHERE email LIKE 'a%';
-
--- tous les users dont l'email contient '7'
-SELECT *
-FROM `user`
-WHERE email LIKE '%7%';
 
 -- affichez tous les users créés le 01/01/2023 et le 01/02/2023
 SELECT *
@@ -46,3 +48,4 @@ AND deleted_at IS NULL;
 SELECT *
 FROM `user`
 WHERE deleted_at IS NOT NULL;
+
