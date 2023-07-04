@@ -1,11 +1,12 @@
--- Exo 1
--- Requêtes simples en lecture
 SELECT *
 FROM `user`
 WHERE email LIKE '%gmail.com';
 --> va matcher toutes les adresses mail qui se terminent par '%gmail.com' 
 --> pas utilisé: on utilise serveur de recherche (elastic search(Java), solr(C), sphynx(Java) par ex)
 
+
+-- Exo 1
+-- Requêtes simples en lecture
 -- Code 1.1
 -- Voici la requête qui permet de lister tous les tags
 SELECT *
