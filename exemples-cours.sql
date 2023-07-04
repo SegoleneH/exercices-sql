@@ -1,3 +1,9 @@
+-- % = *
+
+-- Caractère d'échappement pour les ' : doubler ' 
+    -- exemple :`La promo de l''année 2023`
+
+
 SELECT *
 FROM `user`
 WHERE email LIKE '%gmail.com';
@@ -25,6 +31,8 @@ FROM `user`
 WHERE (created_at BETWEEN '2023-01-01' AND '2023-01-02')
 OR (created_at BETWEEN  '2023-02-01' AND '2023-02-02');
 
+-- affichez tous les users créés le 19/02/2023 
+    -- donc entre le 19/02/2023 à 00:00h et le 20/02/2023 à 00:00h
 SELECT *
 FROM `user`
 WHERE created_at >= '2023-02-19 00:00:00' AND created_at < '2023-02-20 00:00:00';
