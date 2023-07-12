@@ -1,3 +1,5 @@
+-- lien pour accéder à phpMyAdmin : http://localhost/pma-subdir/
+
 -- % = *
 
 -- Caractère d'échappement pour les ' : doubler ' 
@@ -8,7 +10,7 @@
 -- L’opérateur LIKE est utilisé dans la clause WHERE des requêtes SQL. 
     --Ce mot-clé permet d’effectuer une recherche sur un modèle particulier. 
     
---^SYNTAXE =  WHERE colonne LIKE modele
+--^     Syntaxe =  WHERE colonne LIKE modele
 
 --LIKE ‘%a’ : permet de rechercher toutes les chaines de caractère qui se termine par un “a”.
 
@@ -17,6 +19,7 @@
 --LIKE ‘%a%’ : rechercher tous les enregistrement qui utilisent le caractère “a”.
 
 --LIKE ‘pa%on’ : ce modèle permet de rechercher les chaines qui commence par “pa” et qui se terminent par “on”, comme “pantalon” ou “pardon”.
+
 
 
 
@@ -49,3 +52,48 @@ SELECT *
 FROM `user`
 WHERE deleted_at IS NOT NULL;
 
+-- requête pour sélectionner tous ceux qui ont créé leur compte le 01 Avril
+
+SELECT *
+FROM `user`
+WHERE created_at > '2023-04-01 00:00:00' AND < '2023-04-02 00:00:00';
+
+    -- abonner ces users à la newsletter
+    -- + changer password de users : ILLEGAL
+    UPDATE `user`
+    SET newsletter = TRUE , password = 'abc'
+    WHERE created_at created_at >= '2023-04-01 00:00:00' AND < '2023-04-02 00:00:00';
+
+
+-- soft delete ? 
+
+-- hard delete user 3
+DELETE *
+FROM `user`
+WHERE id = 3;
+
+
+-- injecter users dans table de jointure + leur ajouter des projets
+INSERT INTO `projet_user`(`projet_id`, `user_id`) 
+VALUES 
+(42, 1), --projet 42, utilisateur 1
+(43, 1), --projet 43, utilisateur 1
+(44, 1), --projet 44, utilisateur 1
+(42, 2), --projet 42, utilisateur 2
+(73, 2), --projet 73, utilisateur 2
+(74, 2); --projet 74, utilisateur 2
+
+
+-- entreprise location de voitures
+
+-- vérif état des voitures après la location, sur téléphone 
+-- même compte pour tous les salariés
+-- combien de voitures ? une 100aine, turn over de 40%
+
+-- champ texte où on note les infos
+
+-- voiture : marque, modèle, kmage, couleur 
+
+-- date de début + date de restitution
+
+--données client : nom, prénom, tel, email, n°permis

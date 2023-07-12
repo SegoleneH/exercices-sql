@@ -1,0 +1,100 @@
+<!-- bdd = 
+    -etudiant : nom ,prenom ,date de naissance, numéro, adresse mail, compte github, compte discord
+    -enseignant : nom ,prenom ,date de naissance, numéro, adresse mail, compte github, compte discord 
+    ==> formateur = accès que à sa formation
+    ==> admin accès à tout
+
+    -formation = petite description, , formateur, date de début, date de fin, nom des élèves qui participent
+
+    -gestion projets : nom, description, cahier des charges
+
+    deadline 1er septembre
+-->
+<!-- 
+-etudiant
+-formateur
+-admin
+-projet
+-formation 
+
+Méthode pour concevoir une bdd = UML / Meurise en france
+
+<!--* UML : 
+______________________
+|apprenant
+|_____________________
+| nom                   vchar
+| prénom                vchar
+| date de naissance     date
+| tel                   vchar
+| mail                  vchar
+| github                vchar
+| discord               vchar
+
+______________________
+|formation
+|_____________________
+| titre                 vchar
+| description           text
+| date début            date time
+| date fin              date time
+| nombre participants   int
+| (nom participants      => 
+| nom formateur         => devraient être des tables à part entière)
+| formateur id (relié à son id dans la table correspondante)-->
+
+
+<!--* Normalisation de base de données 
+
+___________________________________________
+table = |  id   |    titre      |   description     |
+        |   1   |   typescript  |                   |
+        |   2   |  Typescript   |                   |
+
+- problème : si on cherche "Typescript", on ne trouve pas toutes les formations
+
+Normalisation : 
+
+_________Formation______
+|  id   |    titre      |        
+|   2   |  Typescript   |
+
+_________Session________________            ==> les 3 tables sont liées 
+|  date début   |    date fin   |           ==> la table "formateur" quant à elle, est reliée à "session", car 
+                                                    formateur change en fonction de la session
+_________Apprenant______
+|  id   |  etc ...
+
+-->
+
+<!--* Cardinalité 
+
+code placé auprès de chaque table, qui spécifie combien d'entités sont reliées à combien d'entités
+
+* ou n = sur une table, signifie qu'elle est liée à plusieurs tables 
+
+4 types de relation : 
+- 1 to 1
+- 1 to *    | même chose, seul le sens change
+- * to 1    | même chose, seul le sens change
+- * to *
+
+-->
+
+
+<!--* INDEX is a type of index where values do not need to be unique. 
+    This type of index accepts NULL values; -->
+
+<!--* UNIQUE INDEX is frequently used to remove duplicate rows from a table – 
+    this type of index allows developers to enforce the uniqueness of row values; -->
+
+<!--* FULLTEXT INDEX is an index that is applied on fields that utilize full text search capabilities. 
+    This type of index finds keywords in the text instead of directly comparing values to the values in the index; -->
+
+<!--* DESCENDING INDEX is an index that stores rows in a descending order – 
+    the query optimizer will choose this type of an index when a descending order is requested by the query. This index type was introduced in MySQL 8.0; -->
+
+<!--* PRIMARY KEY is also an index. 
+<!--*    In a nutshell, the PRIMARY KEY is a column or a set of columns that identifies each row in a table 
+<!--*    – frequently used together with fields having an AUTO_INCREMENT attribute. 
+    This type of index does not accept NULL values and once set, the values in the PRIMARY KEY cannot be changed. -->
