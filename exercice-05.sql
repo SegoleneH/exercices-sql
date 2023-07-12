@@ -3,6 +3,9 @@
 
 -- Exo 5.1
 -- Listez tous les students avec leurs tags
+SELECT *
+FROM student 
+INNER JOIN tag;
 
 -- Exo 5.2
 -- Listez tous les tags avec leurs students

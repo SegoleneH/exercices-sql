@@ -15,27 +15,27 @@ AND create_date <= '2021-01-01';
 -- Exo 3.1
 -- Listez les students :
 -- - dont l'email contient la chaîne de caractères `.fr`
--- - OU dont la date de création est antérieure au 10 janvier 2021 inclus
+-- - OU dont la date de création est antérieure au 26 janvier 2021 inclus
 SELECT *
 FROM student
-WHERE (email = '%.fr' OR created_at <= '2021-01-10');
+WHERE (email = '%.fr' OR created_at <= '2021-01-26');
 
 
 -- Exo 3.2
 -- Listez les students :
 -- - dont l'email contient la chaîne de caractères `.fr`
--- - ET dont la date de création est antérieure au 10 janvier 2021 inclus
+-- - ET dont la date de création est antérieure au 26 janvier 2021 inclus
 SELECT *
 FROM student
-WHERE (email = '%.fr' AND created_at <= '2021-01-10');
+WHERE (email = '%.fr' AND created_at <= '2021-01-26');
 
 -- Exo 3.3
 -- Listez les students :
 -- - dont la date de création est postérieure au 1er janvier 2021 exclus
--- - ET dont la date de création est antérieure au 10 janvier 2021 inclus
+-- - ET dont la date de création est antérieure au 25 janvier 2021 inclus
 SELECT * 
 FROM student
-WHERE (created_at > 2021-01-01 AND created_at <= 2021-01-10);
+WHERE (created_at > '2021-01-01' AND created_at <= '2021-01-25');
 
 -- Exo 3.4
 -- Listez les projects :
@@ -43,12 +43,12 @@ WHERE (created_at > 2021-01-01 AND created_at <= 2021-01-10);
 -- - OU dont la date de début est postérieure au 1er juillet 2021 inclus
 SELECT * 
 FROM project
-WHERE (description NOT LIKE '%Dolores%' OR start_date > 2021-01-10);
+WHERE (description NOT LIKE '%Dolores%' OR start_date > '2021-01-10');
 
 -- Exo 3.5
 -- Listez les projects :
 -- - dont la description ne contient pas la chaîne de caractères `Dolores`
--- - ET dont la date de début est postérieure au 1er juillet 2021 inclus
+-- - ET dont la date de début est postérieure au 1er mai 2021 inclus
 SELECT * 
 FROM project
 WHERE (description NOT LIKE '%Dolores%' AND start_date >= '2021-07-01');
