@@ -83,17 +83,23 @@ VALUES
 (73, 2), --projet 73, utilisateur 2
 (74, 2); --projet 74, utilisateur 2
 
+--* Création de clé étrangère : https://vimeo.com/310982123
 
--- entreprise location de voitures
+--* Création d'une table de jointure : https://vimeo.com/336705858
 
--- vérif état des voitures après la location, sur téléphone 
--- même compte pour tous les salariés
--- combien de voitures ? une 100aine, turn over de 40%
+--* DOC JOINTURES : https://blog.codinghorror.com/a-visual-explanation-of-sql-joins/
 
--- champ texte où on note les infos
+-- Réunit lignes selon leur groupe
+SELECT utilisateur.*, groupe.name
+FROM utilisateur
+LEFT OUTER JOIN groupe ON groupe.id = utilisateur.groupe_id
+ORDER BY utilisateur.id ASC;
 
--- voiture : marque, modèle, kmage, couleur 
 
--- date de début + date de restitution
+SELECT *
+FROM utilisateur
+INNER JOIN projet_utilisateur ON projet_utilisateur.utilisateur_id = utilisateur.id;
 
---données client : nom, prénom, tel, email, n°permis
+
+projet.id AS projet_id 
+-- ==> prend projet.id et lui donne l'alias projet_id (renomme colonne)
