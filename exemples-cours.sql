@@ -5,6 +5,8 @@
 -- Caractère d'échappement pour les ' : doubler ' 
     -- exemple :`La promo de l''année 2023`
 
+-- GUIDE ÉCRIRE UNE REQUÊTE SQL : https://towardsdatascience.com/the-6-steps-of-a-sql-select-statement-process-b3696a49a642
+
 --*___________________________________________LIKE_____________________________________________________________________________________________________________
 
 -- L’opérateur LIKE est utilisé dans la clause WHERE des requêtes SQL. 
@@ -20,6 +22,27 @@
 
 --LIKE ‘pa%on’ : ce modèle permet de rechercher les chaines qui commence par “pa” et qui se terminent par “on”, comme “pantalon” ou “pardon”.
 
+
+
+
+--* HAVING & GROUP BY
+
+SELECT colonne1, SUM(colonne2)
+FROM nom_table
+GROUP BY colonne1
+HAVING fonction(colonne2) operateur valeur
+
+        --* Grouping (Group by)
+-- The next step is to execute Group by clause, it will group rows that have the same values into summary rows. 
+-- After this point, all Select expressions will be evaluated per group, instead of being evaluated per row.
+
+        --* HAVING 
+-- permet donc de SÉLECTIONNER les colonnes DE la table “nom_table” en GROUPANT les lignes qui ont des valeurs 
+-- identiques sur la colonne “colonne1” et que la condition de HAVING soit respectée.
+
+--! Important : HAVING est très souvent utilisé en même temps que GROUP BY bien que ce ne soit pas obligatoire.
+
+--* 
 
 
 
@@ -103,3 +126,14 @@ INNER JOIN projet_utilisateur ON projet_utilisateur.utilisateur_id = utilisateur
 
 projet.id AS projet_id 
 -- ==> prend projet.id et lui donne l'alias projet_id (renomme colonne)
+
+
+-- Join utilisateurs en fonction de leur groupe_id 
+SELECT * 
+FROM groupe 
+LEFT OUTER JOIN utilisateur ON groupe.id = utilisateur.groupe_id; 
+
+-- Affiche le nombre d'utilisateurs qui sont abonnés & le nombre d'utilisateurs qui ne sont pas abonnés
+SELECT COUNT(id), newsletter 
+FROM `utilisateur` 
+GROUP BY newsletter; 
